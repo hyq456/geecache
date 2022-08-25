@@ -1,12 +1,13 @@
-package geecache
+package test
 
 import (
+	"geecache/geecache"
 	"reflect"
 	"testing"
 )
 
 func TestGetter(t *testing.T) {
-	var f Getter = GetterFunc(func(key string) ([]byte, error) {
+	var f geecache.Getter = geecache.GetterFunc(func(key string) ([]byte, error) {
 		return []byte(key), nil
 	})
 

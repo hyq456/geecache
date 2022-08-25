@@ -1,7 +1,8 @@
-package geecache
+package test
 
 import (
 	"fmt"
+	"geecache/geecache"
 	"log"
 	"testing"
 )
@@ -14,7 +15,7 @@ var db = map[string]string{
 
 func TestGet(t *testing.T) {
 	loadCount := make(map[string]int, len(db))
-	gee := NewGroup("scores", 2<<10, GetterFunc(
+	gee := geecache.NewGroup("scores", 2<<10, geecache.GetterFunc(
 		func(key string) ([]byte, error) {
 			log.Println("[slowDB] search key", key)
 			if v, ok := db[key]; ok {
